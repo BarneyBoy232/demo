@@ -20,12 +20,12 @@ const handleImgError = (e) => {
   e.currentTarget.onerror = null;
 };
 
-// Business Details
+// Business Details (Template)
 const business = {
-  name: "Green Horizon Landscaping",
-  location: "Wahroonga & North Shore",
-  phone: "0412 345 678",
-  email: "contact@greenhorizon.com.au",
+  name: "[Your Business Name]",
+  location: "[Example City] & Surrounds",
+  phone: "0400 000 000",
+  email: "contact@example.com",
   services: [
     { title: "Garden Maintenance", icon: <Leaf className="w-6 h-6" />, desc: "Regular mowing, weeding, and pruning to keep your garden pristine." },
     { title: "Landscape Design", icon: <Scissors className="w-6 h-6" />, desc: "Complete backyard transformations and structural garden planning." },
@@ -84,7 +84,7 @@ const Footer = () => (
         {business.phone}
       </a>
       <div className="mt-12 pt-12 border-t border-slate-100 text-slate-400 text-sm">
-        © {new Date().getFullYear()} {business.name}. Built with speed in Wahroonga.
+        © {new Date().getFullYear()} {business.name}. Built locally.
       </div>
     </div>
   </footer>
@@ -110,7 +110,7 @@ const HomePage = ({ navigate }) => (
           <span className="text-sm font-medium uppercase tracking-widest">{business.location}</span>
         </div>
         <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
-          Premium Landscaping for <span className="text-green-400">Wahroonga</span> Homes.
+          Premium Landscaping for <span className="text-green-400">[City]</span> Homes.
         </h1>
         <p className="text-xl text-slate-100 mb-10 max-w-2xl mx-auto leading-relaxed">
           From regular maintenance to complete garden redesigns. We bring professional expertise to your backyard.
@@ -167,12 +167,12 @@ const HomePage = ({ navigate }) => (
             <div className="flex gap-1 text-yellow-400 mb-4">
               {[...Array(5)].map((_, i) => <Star key={i} fill="currentColor" size={20} />)}
             </div>
-            <h2 className="text-4xl font-bold mb-6 italic">"The best landscaping service in the North Shore. My garden has never looked better!"</h2>
+            <h2 className="text-4xl font-bold mb-6 italic">"The best landscaping service in the area. My garden has never looked better!"</h2>
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-slate-700 rounded-full flex items-center justify-center font-bold">JD</div>
               <div>
                 <p className="font-bold">John Doe</p>
-                <p className="text-slate-400 text-sm">Wahroonga Resident</p>
+                <p className="text-slate-400 text-sm">[Example City] Resident</p>
               </div>
             </div>
           </div>
@@ -198,7 +198,7 @@ const ServicesPage = ({ navigate }) => (
         <ArrowLeft size={20} /> Back to Home
       </button>
       <h1 className="text-4xl md:text-6xl font-black mb-6">Our Services</h1>
-      <p className="text-xl text-slate-600 max-w-2xl mb-16">Tailored landscaping solutions designed to thrive in the specific climate and soil conditions of Sydney's North Shore.</p>
+      <p className="text-xl text-slate-600 max-w-2xl mb-16">Tailored landscaping solutions designed to thrive in the specific climate and soil conditions of our local area.</p>
       
       <div className="grid gap-12">
         {[
@@ -262,7 +262,7 @@ const ProjectsPage = ({ navigate }) => (
           <div key={i} className="group relative rounded-2xl overflow-hidden aspect-square shadow-2xl">
             <img src={img} className="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt="Work" onError={handleImgError} />
             <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-              <span className="font-bold text-lg">Wahroonga Transformation #{i+1}</span>
+              <span className="font-bold text-lg">Project Transformation #{i+1}</span>
             </div>
           </div>
         ))}
@@ -270,13 +270,13 @@ const ProjectsPage = ({ navigate }) => (
 
       {/* Expanded Reviews Section */}
       <div className="border-t border-white/10 pt-24">
-        <h2 className="text-3xl font-bold mb-12 text-center">What our North Shore clients say</h2>
+        <h2 className="text-3xl font-bold mb-12 text-center">What our clients say</h2>
         <div className="grid md:grid-cols-2 gap-8">
           {[
-            { name: "Sarah Jenkins", loc: "Wahroonga", text: "The team redesigned our entire backyard. The attention to detail in the paving was incredible. Highly recommend for any North Shore homeowner." },
-            { name: "David Thompson", loc: "Turramurra", text: "Reliable, clean, and professional. They keep our garden looking like a botanical park week in, week out." },
-            { name: "Michelle Wu", loc: "Pymble", text: "We had a complex irrigation problem that three other companies couldn't fix. Green Horizon solved it in two hours." },
-            { name: "Peter Richards", loc: "St Ives", text: "Best value for money. They aren't the cheapest, but you definitely get what you pay for. Exceptional quality." }
+            { name: "Jane Doe", loc: "Example City", text: "The team redesigned our entire backyard. The attention to detail in the paving was incredible. Highly recommend for any homeowner." },
+            { name: "John Smith", loc: "Example Suburb", text: "Reliable, clean, and professional. They keep our garden looking like a botanical park week in, week out." },
+            { name: "Alice Johnson", loc: "Example Area", text: "We had a complex irrigation problem that three other companies couldn't fix. The team solved it in two hours." },
+            { name: "Bob Wilson", loc: "Example City", text: "Best value for money. They aren't the cheapest, but you definitely get what you pay for. Exceptional quality." }
           ].map((r, i) => (
             <div key={i} className="bg-white/5 p-8 rounded-3xl border border-white/10 relative">
               <Quote className="absolute top-6 right-8 text-green-500/20 w-12 h-12" />
