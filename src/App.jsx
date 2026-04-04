@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 
 const App = () => {
-  const [currentPage, setCurrentPage] = useState('home'); 
+  const [currentPage, setCurrentPage] = useState('home'); // 'home', 'services', 'projects'
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -30,7 +30,7 @@ const App = () => {
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
-    window.scrollTo(0, 0); 
+    window.scrollTo(0, 0); // Reset scroll on page change
     return () => window.removeEventListener('scroll', handleScroll);
   }, [currentPage]);
 
@@ -38,6 +38,8 @@ const App = () => {
     setCurrentPage(page);
     setIsMenuOpen(false);
   };
+
+  // --- Shared Components ---
 
   const Navbar = () => (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled || isMenuOpen || currentPage !== 'home' ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'}`}>
@@ -96,12 +98,14 @@ const App = () => {
     </footer>
   );
 
+  // --- Page Views ---
+
   const HomePage = () => (
     <>
       <section className="relative h-[90vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-black/50 z-10" />
         <img 
-          src="https://images.unsplash.com/photo-1558905758-2da9c76a0d54?auto=format&fit=crop&q=80&w=2000" 
+          src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&q=80&w=2000" 
           alt="Garden" 
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -125,27 +129,27 @@ const App = () => {
       </section>
       
       <section className="py-24 max-w-7xl mx-auto px-4 text-center">
-        <h2 className="text-4xl font-bold mb-16 text-slate-900">Why North Shore families choose us</h2>
+        <h2 className="text-4xl font-bold mb-16">Why North Shore families choose us</h2>
         <div className="grid md:grid-cols-3 gap-12">
           <div className="space-y-4">
             <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto text-green-600">
               <Star fill="currentColor" />
             </div>
-            <h3 className="text-xl font-bold text-slate-900">5-Star Local Reputation</h3>
+            <h3 className="text-xl font-bold">5-Star Local Reputation</h3>
             <p className="text-slate-600">Trusted by hundreds of homeowners across Wahroonga and Turramurra.</p>
           </div>
           <div className="space-y-4">
             <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto text-green-600">
               <CheckCircle />
             </div>
-            <h3 className="text-xl font-bold text-slate-900">Fully Insured & Licensed</h3>
+            <h3 className="text-xl font-bold">Fully Insured & Licensed</h3>
             <p className="text-slate-600">Peace of mind with comprehensive coverage for every project size.</p>
           </div>
           <div className="space-y-4">
             <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto text-green-600">
               <Clock />
             </div>
-            <h3 className="text-xl font-bold text-slate-900">Reliable Scheduling</h3>
+            <h3 className="text-xl font-bold">Reliable Scheduling</h3>
             <p className="text-slate-600">We turn up when we say we will. No excuses, just results.</p>
           </div>
         </div>
@@ -156,10 +160,10 @@ const App = () => {
   const ServicesPage = () => (
     <div className="pt-32 pb-24 bg-slate-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4">
-        <button onClick={() => navigate('home')} className="flex items-center gap-2 text-green-600 font-bold mb-8 hover:gap-3 transition-all outline-none">
+        <button onClick={() => navigate('home')} className="flex items-center gap-2 text-green-600 font-bold mb-8 hover:gap-3 transition-all">
           <ArrowLeft size={20} /> Back to Home
         </button>
-        <h1 className="text-4xl md:text-6xl font-black mb-6 text-slate-900">Our Services</h1>
+        <h1 className="text-4xl md:text-6xl font-black mb-6">Our Services</h1>
         <p className="text-xl text-slate-600 max-w-2xl mb-16">Tailored landscaping solutions designed to thrive in the specific climate and soil conditions of Sydney's North Shore.</p>
         
         <div className="grid gap-12">
@@ -167,13 +171,13 @@ const App = () => {
             { 
               title: "Garden Maintenance", 
               icon: <Leaf className="w-10 h-10" />, 
-              image: "https://images.unsplash.com/photo-1592419044706-39796d40f98c?auto=format&fit=crop&q=80&w=800",
+              image: "https://images.unsplash.com/photo-1558905758-2da9c76a0d54?auto=format&fit=crop&q=80&w=800",
               items: ["Hedge Trimming", "Lawn Mowing & Edging", "Weed Control", "Pruning & Mulching"]
             },
             { 
               title: "Landscape Construction", 
               icon: <Scissors className="w-10 h-10" />, 
-              image: "https://images.unsplash.com/photo-1599110364762-ecd34da44797?auto=format&fit=crop&q=80&w=800",
+              image: "https://images.unsplash.com/photo-1590011831835-51d020d91240?auto=format&fit=crop&q=80&w=800",
               items: ["Retaining Walls", "Paving & Steppers", "Turf Installation", "Decking"]
             },
             { 
@@ -185,15 +189,15 @@ const App = () => {
           ].map((service, idx) => (
             <div key={idx} className="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100 flex flex-col md:flex-row">
               <div className="md:w-1/3">
-                <img src={service.image} alt={service.title} className="h-full w-full object-cover min-h-[300px]" />
+                <img src={service.image} alt={service.title} className="h-full w-full object-cover" />
               </div>
               <div className="p-8 md:p-12 md:w-2/3 flex flex-col justify-center">
                 <div className="text-green-600 mb-4">{service.icon}</div>
-                <h2 className="text-3xl font-bold mb-6 text-slate-900">{service.title}</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <h2 className="text-3xl font-bold mb-6">{service.title}</h2>
+                <div className="grid grid-cols-2 gap-4">
                   {service.items.map((item, i) => (
                     <div key={i} className="flex items-center gap-2 text-slate-700 font-medium">
-                      <CheckCircle className="text-green-500 w-5 h-5 flex-shrink-0" /> {item}
+                      <CheckCircle className="text-green-500 w-5 h-5" /> {item}
                     </div>
                   ))}
                 </div>
@@ -208,21 +212,22 @@ const App = () => {
   const ProjectsPage = () => (
     <div className="pt-32 pb-24 bg-slate-900 text-white min-h-screen">
       <div className="max-w-7xl mx-auto px-4">
-        <button onClick={() => navigate('home')} className="flex items-center gap-2 text-green-400 font-bold mb-8 hover:gap-3 transition-all outline-none">
+        <button onClick={() => navigate('home')} className="flex items-center gap-2 text-green-400 font-bold mb-8 hover:gap-3 transition-all">
           <ArrowLeft size={20} /> Back to Home
         </button>
         <h1 className="text-4xl md:text-6xl font-black mb-16">Recent Transformations</h1>
 
+        {/* Gallery Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
           {[
-            "https://images.unsplash.com/photo-1584473457406-623048ff437e?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1557429287-b2e26467fc2b?auto=format&fit=crop&q=80&w=800",
             "https://images.unsplash.com/photo-1592150621744-aca64f48394a?auto=format&fit=crop&q=80&w=800",
-            "https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&q=80&w=800",
-            "https://images.unsplash.com/photo-1600585154340-be6199f7a096?auto=format&fit=crop&q=80&w=800",
-            "https://images.unsplash.com/photo-1533467686143-bb9f993f416a?auto=format&fit=crop&q=80&w=800",
-            "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=800"
+            "https://images.unsplash.com/photo-1584473457406-623048ff437e?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&q=80&w=800",
+            "https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&q=80&w=2000",
+            "https://images.unsplash.com/photo-1533467686143-bb9f993f416a?auto=format&fit=crop&q=80&w=800"
           ].map((img, i) => (
-            <div key={i} className="group relative rounded-2xl overflow-hidden aspect-square shadow-2xl bg-slate-800">
+            <div key={i} className="group relative rounded-2xl overflow-hidden aspect-square shadow-2xl">
               <img src={img} className="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt="Work" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                 <span className="font-bold text-lg">Wahroonga Transformation #{i+1}</span>
@@ -231,6 +236,7 @@ const App = () => {
           ))}
         </div>
 
+        {/* Expanded Reviews Section */}
         <div className="border-t border-white/10 pt-24">
           <h2 className="text-3xl font-bold mb-12 text-center">What our North Shore clients say</h2>
           <div className="grid md:grid-cols-2 gap-8">
@@ -257,7 +263,7 @@ const App = () => {
   );
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen">
       <Navbar />
       
       {currentPage === 'home' && <HomePage />}
